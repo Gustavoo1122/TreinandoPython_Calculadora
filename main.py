@@ -29,6 +29,17 @@ def entrada_valores(e):
     valorLabel.config(text=todos_valores)
 
 
+#Criando função do botão backspace
+def apagar_ultimo_dig():
+    global todos_valores
+    todos_valores = valorLabel['text']
+
+    if todos_valores:
+        novo_todos_valores = todos_valores[:-1]
+        valorLabel['text'] = novo_todos_valores
+        todos_valores = novo_todos_valores
+
+
 def resultado_calculo():
     global todos_valores
 
@@ -37,6 +48,7 @@ def resultado_calculo():
     resultadoLabel.config(text=str(resultado))
     valor_texto.set(str(resultado))
     todos_valores = str(resultado)
+
 
 #Função para limpar a tela
 def limpar_tela():
@@ -126,7 +138,7 @@ btn_16.place(x = 0, y = 280)
 btn_17 = Button(frame_body, command = lambda: entrada_valores('.'), text = '.', width = 6, height= 3, bg = cor1, fg = cor4, font = ('Tahoma 12 bold'), relief = RAISED, overrelief = RIDGE)
 btn_17.place(x = 70, y = 280)
 
-btn_18 = Button(frame_body, command = lambda: entrada_valores('<'), text = '<', width = 6, height= 3, bg = cor1, fg = cor4, font = ('Tahoma 12 bold'), relief = RAISED, overrelief = RIDGE)
+btn_18 = Button(frame_body, command = apagar_ultimo_dig, text = '<', width = 6, height= 3, bg = cor1, fg = cor4, font = ('Tahoma 12 bold'), relief = RAISED, overrelief = RIDGE)
 btn_18.place(x = 140, y = 280)
 
 janela.mainloop()
